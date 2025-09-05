@@ -1,7 +1,6 @@
-# PG-CoE
-simulation of cyber security in power grid system
+# PG-CoE (simulation of cyber security in power grid system)
 
-# grid_sim – Attack/Defense DC Power Flow Sandbox
+## grid_sim – Attack/Defense DC Power Flow Sandbox
 
 Lightweight Python framework for experimenting with a tri‑level (defense–attack–operation) formulation on power transmission networks using a DC approximation. Provides random grid generation, optimal dispatch (min load shedding), brute‑force attacker and heuristic defender, plus plotting, animation, and notebook widgets.
 
