@@ -12,9 +12,7 @@ max and min power generation rating vectors: $g^{max}=\{g_i^{max}\} \in \mathbb{
 max and min power consumption rating vectors: $c^{max}=\{c_i^{max}\} \in \mathbb{R}^{|V|}, c^{min}=\{c_i^{min}\} \in \mathbb{R}^{|V|}$ 
 
 At the $i$-th node/bus the load shedding $s_i$ is defined from:
-$$
-g_i - c_i + s_i = \sum_{j\sim i} f_{ij} \implies g-c+s = L_Y\theta\,,\quad f_{ij} = Y_{ij} \left( \theta_i - \theta_j \right) \implies F = \{f_{ij}\} = diag(Y) A_G^\top \theta
-$$
+$$g_i - c_i + s_i = \sum_{j\sim i} f_{ij} \implies g-c+s = L_Y\theta\,,\quad f_{ij} = Y_{ij} \left( \theta_i - \theta_j \right) \implies F = \{f_{ij}\} = diag(Y) A_G^\top \theta$$
 where $L_Y \in \mathbb{R}^{|V|\times |V|}$ is the laplacian of $Y$ and $A_G \in \{-1,0,1\}^{|V|\times |E|}$ is the signed node-edge incinence matrix (each column of $A_G$ has a +$1$ at the tail node and $−1$ at the head node) of graph $G$.
 
 Since load shedding at a bus cann't be negative or greater than its demand/consumption, we have the bound $0 \leq s_i \leq c_i$. And hence the total load shedding in a power grid can be expressed as:
