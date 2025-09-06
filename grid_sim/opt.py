@@ -36,6 +36,12 @@ def solve_dispatch_min_shed(model: GridModel, disabled_lines: Optional[Set[Tuple
             inflow_terms.append(b*(theta[j] - theta[i]))  # inflow positive if angle_j > angle_i
         prob += g[i] - c[i] + pulp.lpSum(inflow_terms) == model.demand.get(i,0.0) - shed[i]
 
+     # bus capacity constraints
+    for i in buses:
+        prob += g[i] <= model.g_max.get(i, 0.0)
+        prob += g[i] >= model.g_min.get(i, 0.0)
+        prob += c[i] >= model.c_min.get(i, 0.0)
+        prob += c[i] <= model.c_max.get(i, 0.0)
     # line capacity constraints
     for (i,j) in lines:
         b = model.G[i][j]['b']
@@ -103,3 +109,4 @@ def solve_defense_min_shed(model: GridModel, attack_budget: int, defend_budget: 
     best_def['attack_budget'] = attack_budget
     best_def['defend_budget'] = defend_budget
     return best_def
+
