@@ -48,7 +48,7 @@ def solve_dispatch_min_shed(model: GridModel, disabled_lines: Optional[Set[Tuple
         cap = model.G[i][j]['capacity']
         flow_ij = b*(theta[i] - theta[j])
         prob += flow_ij <= cap
-        prob += -flow_ij <= cap
+        # prob += -flow_ij <= cap
 
     res = prob.solve(pulp.PULP_CBC_CMD(msg=False))
     status = pulp.LpStatus[prob.status]
@@ -109,4 +109,5 @@ def solve_defense_min_shed(model: GridModel, attack_budget: int, defend_budget: 
     best_def['attack_budget'] = attack_budget
     best_def['defend_budget'] = defend_budget
     return best_def
+
 
